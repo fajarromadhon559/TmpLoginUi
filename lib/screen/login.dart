@@ -1,8 +1,7 @@
 import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+import 'package:tmp_login/component/animated_btn.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -45,7 +44,9 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const Spacer(),
                 const SizedBox(
                   width: 260,
                   child: Column(
@@ -67,36 +68,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
+                const Spacer(flex: 2),
+                AnimatedBtn(
+                  btnAnimationController: _btnAnimationController,
+                  press: () {
                     _btnAnimationController.isActive = true;
                   },
-                  child: SizedBox(
-                    height: 64,
-                    width: 260,
-                    child: Stack(
-                      children: [
-                        RiveAnimation.asset(
-                          "assets/Rive/button.riv",
-                          controllers: [_btnAnimationController],
-                        ),
-                        const Positioned.fill(
-                            top: 8,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(CupertinoIcons.arrow_right),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  "Start to Login",
-                                  style: TextStyle(fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ))
-                      ],
-                    ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 24),
+                  child: Text(
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
                   ),
                 )
               ],
